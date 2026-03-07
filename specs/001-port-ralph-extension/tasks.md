@@ -27,9 +27,9 @@
 
 **Purpose**: Create directory structure and boilerplate files
 
-- [ ] T001 Create directory structure: `commands/`, `scripts/powershell/`, `scripts/bash/`, `agents/` per plan.md project structure
-- [ ] T002 [P] Create MIT license file at LICENSE
-- [ ] T003 [P] Create initial changelog at CHANGELOG.md with v1.0.0 Unreleased section
+- [x] T001 Create directory structure: `commands/`, `scripts/powershell/`, `scripts/bash/`, `agents/` per plan.md project structure
+- [x] T002 [P] Create MIT license file at LICENSE
+- [x] T003 [P] Create initial changelog at CHANGELOG.md with v1.0.0 Unreleased section
 
 ---
 
@@ -39,8 +39,8 @@
 
 **⚠️ CRITICAL**: All user story phases reference manifest commands and config fields. These must exist first.
 
-- [ ] T004 Create extension.yml manifest per specs/001-port-ralph-extension/contracts/extension-manifest.md at extension.yml (schema v1.0, 2 commands, 1 hook, 1 config, defaults section)
-- [ ] T005 [P] Create ralph-config.template.yml per specs/001-port-ralph-extension/contracts/config-schema.md at ralph-config.template.yml (model: claude-sonnet-4.6, max_iterations: 10, agent_cli: copilot — NO authentication tokens)
+- [x] T004 Create extension.yml manifest per specs/001-port-ralph-extension/contracts/extension-manifest.md at extension.yml (schema v1.0, 2 commands, 1 hook, 1 config, defaults section)
+- [x] T005 [P] Create ralph-config.template.yml per specs/001-port-ralph-extension/contracts/config-schema.md at ralph-config.template.yml (model: claude-sonnet-4.6, max_iterations: 10, agent_cli: copilot — NO authentication tokens)
 
 **Checkpoint**: Manifest and config template exist. Extension structure is defined.
 
@@ -73,10 +73,10 @@ No standalone implementation tasks — US1 is the integration checkpoint verifie
 
 ### Implementation for User Story 2
 
-- [ ] T006 [US2] Port ralph-loop.ps1 from source repo to scripts/powershell/ralph-loop.ps1 — adapt per research R2: remove common.ps1 dependency (inline any needed helpers), add config loading from .specify/extensions/ralph/ralph-config.yml with env var overrides (SPECKIT_RALPH_MODEL, SPECKIT_RALPH_MAX_ITERATIONS, SPECKIT_RALPH_AGENT_CLI), read agent_cli from config instead of hardcoded copilot path. MUST preserve from source: 3-consecutive-failure circuit breaker (FR-009), Ctrl+C/SIGINT trap with exit 130 (FR-010), summary block on ALL 4 termination paths — completion/limit/failure/interrupt (FR-013), and all 3 termination-condition checks (FR-008). Source: C:\Users\Rubis\Projects\spec-kit\scripts\powershell\ralph-loop.ps1
-- [ ] T007 [P] [US2] Port ralph-loop.sh from source repo to scripts/bash/ralph-loop.sh — adapt per research R2: same changes as PowerShell (remove common.sh dependency, add YAML config loading, env var overrides, agent_cli from config). MUST preserve from source: 3-consecutive-failure circuit breaker (FR-009), Ctrl+C/SIGINT trap with exit 130 (FR-010), summary block on ALL 4 termination paths (FR-013), and all 3 termination-condition checks (FR-008). Source: C:\Users\Rubis\Projects\spec-kit\scripts\bash\ralph-loop.sh
-- [ ] T008 [P] [US2] Port agent profile from source repo to agents/speckit.ralph.agent.md — adapt per research R7: keep all 11 outline steps, scope constraint, progress format, completion signal; add extension provenance note as YAML frontmatter field (NOT in body instructions — avoids wasting agent context tokens); keep reference to .specify/scripts/powershell/check-prerequisites.ps1 (core spec-kit script). Source: C:\Users\Rubis\Projects\spec-kit\.github\agents\speckit.ralph.agent.md
-- [ ] T009 [US2] Create commands/run.md thin launcher per specs/001-port-ralph-extension/contracts/command-schemas.md at commands/run.md — implement: prerequisite validation (copilot CLI, tasks.md, git repo, feature branch), agent profile placement (copy agents/speckit.ralph.agent.md to .github/agents/ if missing), platform detection (PowerShell vs Bash), delegate to ralph-loop.ps1 or ralph-loop.sh with configured parameters (model, max_iterations, spec_dir). Delegation mechanism: frontmatter `scripts` field declares script paths (scripts/powershell/ralph-loop.ps1, scripts/bash/ralph-loop.sh); body instructions tell the agent to validate prerequisites FIRST, then launch the platform-appropriate script from frontmatter. Extension path resolution: after `specify extension add`, the extension files are symlinked/copied into `.specify/extensions/ralph/` — the agent resolves script paths relative to the extension install directory via the frontmatter references
+- [x] T006 [US2] Port ralph-loop.ps1 from source repo to scripts/powershell/ralph-loop.ps1 — adapt per research R2: remove common.ps1 dependency (inline any needed helpers), add config loading from .specify/extensions/ralph/ralph-config.yml with env var overrides (SPECKIT_RALPH_MODEL, SPECKIT_RALPH_MAX_ITERATIONS, SPECKIT_RALPH_AGENT_CLI), read agent_cli from config instead of hardcoded copilot path. MUST preserve from source: 3-consecutive-failure circuit breaker (FR-009), Ctrl+C/SIGINT trap with exit 130 (FR-010), summary block on ALL 4 termination paths — completion/limit/failure/interrupt (FR-013), and all 3 termination-condition checks (FR-008). Source: C:\Users\Rubis\Projects\spec-kit\scripts\powershell\ralph-loop.ps1
+- [x] T007 [P] [US2] Port ralph-loop.sh from source repo to scripts/bash/ralph-loop.sh — adapt per research R2: same changes as PowerShell (remove common.sh dependency, add YAML config loading, env var overrides, agent_cli from config). MUST preserve from source: 3-consecutive-failure circuit breaker (FR-009), Ctrl+C/SIGINT trap with exit 130 (FR-010), summary block on ALL 4 termination paths (FR-013), and all 3 termination-condition checks (FR-008). Source: C:\Users\Rubis\Projects\spec-kit\scripts\bash\ralph-loop.sh
+- [x] T008 [P] [US2] Port agent profile from source repo to agents/speckit.ralph.agent.md — adapt per research R7: keep all 11 outline steps, scope constraint, progress format, completion signal; add extension provenance note as YAML frontmatter field (NOT in body instructions — avoids wasting agent context tokens); keep reference to .specify/scripts/powershell/check-prerequisites.ps1 (core spec-kit script). Source: C:\Users\Rubis\Projects\spec-kit\.github\agents\speckit.ralph.agent.md
+- [x] T009 [US2] Create commands/run.md thin launcher per specs/001-port-ralph-extension/contracts/command-schemas.md at commands/run.md — implement: prerequisite validation (copilot CLI, tasks.md, git repo, feature branch), agent profile placement (copy agents/speckit.ralph.agent.md to .github/agents/ if missing), platform detection (PowerShell vs Bash), delegate to ralph-loop.ps1 or ralph-loop.sh with configured parameters (model, max_iterations, spec_dir). Delegation mechanism: frontmatter `scripts` field declares script paths (scripts/powershell/ralph-loop.ps1, scripts/bash/ralph-loop.sh); body instructions tell the agent to validate prerequisites FIRST, then launch the platform-appropriate script from frontmatter. Extension path resolution: after `specify extension add`, the extension files are symlinked/copied into `.specify/extensions/ralph/` — the agent resolves script paths relative to the extension install directory via the frontmatter references
 
 **Checkpoint**: Ralph loop runs end-to-end via direct script invocation. US2 acceptance scenarios 1-5 satisfied.
 
@@ -90,7 +90,7 @@ No standalone implementation tasks — US1 is the integration checkpoint verifie
 
 ### Implementation for User Story 4
 
-- [ ] T010 [US4] Create commands/iterate.md per specs/001-port-ralph-extension/contracts/command-schemas.md at commands/iterate.md — port from source repo templates/commands/ralph.md (adapt per research R6: update frontmatter script references to use ../../scripts/bash/check-prerequisites.sh and ../../scripts/powershell/check-prerequisites.ps1 with --json --require-tasks --include-tasks flags, keep scope constraint, outline steps, progress format, stop conditions, quality gates, error handling). Source: C:\Users\Rubis\Projects\spec-kit\templates\commands\ralph.md
+- [x] T010 [US4] Create commands/iterate.md per specs/001-port-ralph-extension/contracts/command-schemas.md at commands/iterate.md — port from source repo templates/commands/ralph.md (adapt per research R6: update frontmatter script references to use ../../scripts/bash/check-prerequisites.sh and ../../scripts/powershell/check-prerequisites.ps1 with --json --require-tasks --include-tasks flags, keep scope constraint, outline steps, progress format, stop conditions, quality gates, error handling). Source: C:\Users\Rubis\Projects\spec-kit\templates\commands\ralph.md
 
 **Checkpoint**: Iterate command defined. US4 acceptance scenarios 1-4 satisfied. US3 (Progress Tracking) also satisfied — progress.md format is specified in iterate command instructions and Initialize-ProgressFile function in scripts.
 
@@ -100,8 +100,8 @@ No standalone implementation tasks — US1 is the integration checkpoint verifie
 
 **Purpose**: Documentation and integration validation
 
-- [ ] T011 Create README.md at README.md documenting: extension overview, prerequisites (spec-kit, copilot CLI, git), installation via specify extension add, both usage paths (agent command /speckit.ralph.run AND direct script invocation), configuration options (model, max_iterations, agent_cli), environment variables, how the loop works (iteration cycle, termination conditions), resume after interruption
-- [ ] T012 [P] Run quickstart.md validation: verify `specify extension add --dev .` succeeds on a spec-kit project, `specify extension list` shows ralph extension with 2 commands, config file created at .specify/extensions/ralph/ralph-config.yml, iterate.md frontmatter script paths (../../scripts/bash/check-prerequisites.sh, ../../scripts/powershell/check-prerequisites.ps1) resolve correctly after registration — confirms US1 acceptance scenarios 1-3
+- [x] T011 Create README.md at README.md documenting: extension overview, prerequisites (spec-kit, copilot CLI, git), installation via specify extension add, both usage paths (agent command /speckit.ralph.run AND direct script invocation), configuration options (model, max_iterations, agent_cli), environment variables, how the loop works (iteration cycle, termination conditions), resume after interruption
+- [x] T012 [P] Run quickstart.md validation: verify `specify extension add --dev .` succeeds on a spec-kit project, `specify extension list` shows ralph extension with 2 commands, config file created at .specify/extensions/ralph/ralph-config.yml, iterate.md frontmatter script paths (../../scripts/bash/check-prerequisites.sh, ../../scripts/powershell/check-prerequisites.ps1) resolve correctly after registration — confirms US1 acceptance scenarios 1-3
 
 ---
 

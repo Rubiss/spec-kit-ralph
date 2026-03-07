@@ -1,0 +1,7 @@
+# Default owner for everything in the repo.
+# @Rubiss will be automatically requested for review
+# on every pull request.
+*       @Rubiss
+
+# Protect the CODEOWNERS file itself
+/.github/CODEOWNERS @Rubiss

@@ -12,7 +12,7 @@
 
 ```bash
 # Clone the extension
-git clone https://github.com/rubis-vladimir/spec-kit-ralph
+git clone https://github.com/Rubiss/spec-kit-ralph
 
 # Install as a dev extension
 cd your-project

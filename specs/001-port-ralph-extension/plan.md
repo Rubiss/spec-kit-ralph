@@ -5,7 +5,7 @@
 
 ## Summary
 
-Port the ralph loop autonomous implementation system from spec-kit core (`C:\Users\Rubis\Projects\spec-kit`, branch `001-ralph-loop-implement`, last 4 commits) into a standalone spec-kit extension. The extension packages orchestrator scripts (PowerShell + Bash), agent command files, a Copilot agent profile, and config template into the `extension.yml` manifest format. The `speckit.ralph.run` command acts as a thin launcher delegating to platform scripts; `speckit.ralph.iterate` defines single-iteration agent behavior. No Python code — all orchestration via scripts, all agent behavior via markdown commands.
+Port the ralph loop autonomous implementation system from spec-kit core into a standalone spec-kit extension. The extension packages orchestrator scripts (PowerShell + Bash), agent command files, a Copilot agent profile, and config template into the `extension.yml` manifest format. The `speckit.ralph.run` command acts as a thin launcher delegating to platform scripts; `speckit.ralph.iterate` defines single-iteration agent behavior. No Python code — all orchestration via scripts, all agent behavior via markdown commands.
 
 ## Technical Context
 
